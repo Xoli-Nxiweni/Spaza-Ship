@@ -1,34 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Navbar from './components/Navbar'
+import AuthModal from './components/auth'
 
-function App() {
-  const [count, setCount] = useState(0)
+
+const App = () => {
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="wrapper">
+      <nav>
+      <Navbar/>
+      </nav>
+      <aside className='aside1'>
+        <h1>SIDE MENU</h1>
+      </aside>
+      <main>
+        <h1>MAIN CONTENT</h1>
+      </main>
+      <aside className='aside2'>
+        <h1>SIDE MENU</h1>
+      </aside>
+      {/* <section>
+        <h1>EXTRA STUFF</h1>
+      </section> */}
+      <footer>
+        <h1>FOOTER</h1>
+      </footer>
+
+      <AuthModal />
+    </div>
   )
 }
 
