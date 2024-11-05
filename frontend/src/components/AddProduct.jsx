@@ -13,7 +13,7 @@ const AddProduct = ({ onClose }) => {
     price: '',
     category: '',
     quantity: '',
-    images: []
+    images: ''
   });
 
   const handleChange = (e) => {

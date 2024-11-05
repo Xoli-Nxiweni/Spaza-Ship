@@ -9,7 +9,7 @@ const AuthModal = () => {
   const { isAuthModalOpen, isSignUp, loading, error } = useSelector((state) => state.auth);
   const modalRef = useRef(null);
   const isAuthenticated = useSelector((state) => state.auth.token);
-  const isProfileModalOpen = useSelector((state) => state.auth.isProfileModalOpen); // Track profile modal state
+  const isProfileModalOpen = useSelector((state) => state.auth.isProfileModalOpen);
   
   // State to hold form data
   const [formData, setFormData] = useState({
@@ -102,7 +102,7 @@ const AuthModal = () => {
             <h4>{isSignUp ? 'Sign-Up for SPAZAHUB' : 'Sign-In to SPAZAHUB'}</h4>
             <p>{isSignUp ? 'Create your account' : 'Welcome back, please sign-in'}</p>
             <h4>-or-</h4>
-            <button className="googleBtn">Continue with Google</button>
+            <button className="googleBtn" onClick={()=> alert("Still going to implement the oauth!!")}>Continue with Google</button>
 
             <form onSubmit={handleSubmit}>
               {isSignUp && (

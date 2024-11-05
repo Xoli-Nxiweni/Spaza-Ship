@@ -18,10 +18,13 @@ export const registerUser = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const response = await axios.post('http://localhost:6060/api/user', userData);
-      return response.data; // Assuming API returns user data
+      const token = response.data.token; // Assuming API returns a token
+      // Persist the token in local storage
+      localStorage.setItem('token', token);
+      return response.data; // Return user data along with token
     } catch (error) {
-      console.error('Registration error:', error.response.data);
-      return rejectWithValue(error.response.data.message || 'Failed to register');
+      console.error('Registration error:', error.response?.data);
+      return rejectWithValue(error.response?.data.message || 'Failed to register');
     }
   }
 );
@@ -33,10 +36,13 @@ export const loginUser = createAsyncThunk(
     try {
       dispatch(showLoader()); // Show loader before async request
       const response = await axios.post('http://localhost:6060/api/user/login', userData);
-      return response.data; // Assuming API returns user data and token
+      const token = response.data.token; // Assuming API returns a token
+      // Persist the token in local storage
+      localStorage.setItem('token', token);
+      return response.data; // Return user data along with token
     } catch (error) {
-      console.error('Login error:', error.response.data);
-      return rejectWithValue(error.response.data.message || 'Failed to login');
+      console.error('Login error:', error.response?.data);
+      return rejectWithValue(error.response?.data.message || 'Failed to login');
     } finally {
       dispatch(hideLoader()); // Hide loader after async request completes
     }
@@ -76,9 +82,11 @@ const authSlice = createSlice({
       .addCase(registerUser.fulfilled, (state, action) => {
         state.loading = false;
         state.user = action.payload; // Set the user data from response
-        // If your API returns a token on registration, uncomment the next line
-        // state.token = action.payload.token;
-        localStorage.setItem('token', action.payload.token); // Save token to local storage
+        // If your API returns a token on registration, make sure to handle it here
+        if (action.payload.token) {
+          localStorage.setItem('token', action.payload.token); // Save token to local storage
+          state.token = action.payload.token; // Set token in state as well
+        }
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.loading = false;

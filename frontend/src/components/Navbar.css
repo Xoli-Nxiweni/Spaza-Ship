@@ -118,35 +118,3 @@
     cursor: pointer;
   }
   
-  /* Responsive design */
-  @media (max-width: 768px) {
-    /* Hide elements for mobile and show toggle */
-    .navbar-search,
-    .navbar-user-actions,
-    .navbar-links {
-      display: none;
-    }
-    .navbar-toggle {
-      display: block;
-    }
-  
-    /* Show mobile menu when open */
-    .mobile-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background-color: #333;
-      flex-direction: column;
-      gap: 0;
-      padding: 1rem 0;
-      display: flex;
-    }
-    .mobile-menu li {
-      text-align: center;
-    }
-    .mobile-menu a {
-      padding: 1rem;
-    }
-  }
-  
