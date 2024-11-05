@@ -1,9 +1,42 @@
 import Products from "../models/products.js";
+import multer from 'multer';
+import path from 'path';
+
+// Configure multer for file storage
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/'); // Directory to store uploaded files
+    },
+    filename: (req, file, cb) => {
+        cb(null, `${Date.now()}-${file.originalname}`); // Rename the file to avoid duplicates
+    },
+});
+
+// Create the multer upload instance
+const upload = multer({ storage: storage });
+
+// Middleware to handle file uploads in routes
+export const uploadProductImages = upload.array('images'); // Use 'images' as the field name for multiple file uploads
 
 // Add a new product
 const addProduct = async (req, res) => {
     try {
-        const newProduct = await Products.create(req.body);
+        // Extract other product details from the request body
+        const { name, description, price, category, quantity } = req.body;
+
+        // Handle images
+        const images = req.files ? req.files.map(file => file.path) : []; // Get file paths
+
+        // Create the new product in the database
+        const newProduct = await Products.create({
+            name,
+            description,
+            price,
+            category,
+            quantity,
+            images // Save the array of image paths
+        });
+
         res.status(201).json({ message: "Product added successfully", newProduct });
     } catch (error) {
         console.error(error);

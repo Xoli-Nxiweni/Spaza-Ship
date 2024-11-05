@@ -23,7 +23,7 @@ router.post("/user/login", usersController.loginUser);
 router.post("/user/logout", authMiddleware, logout);
 
 //products endpoints
-router.post("/product", productsController.addProduct);
+router.post('/product', uploadProductImages, productController.addProduct);
 router.get("/product/", productsController.viewProducts);
 router.get("/product/:id", productsController.addProduct);
 router.put("/product/:id", productsController.updateProduct);
