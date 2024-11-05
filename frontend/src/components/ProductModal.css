@@ -1,0 +1,120 @@
+/* ProductModal.css */
+
+/* Overlay to cover the entire screen */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Darker semi-transparent background */
+    z-index: 999; 
+    backdrop-filter: blur(10px);
+  }
+  
+  /* Modal Container */
+  .product-modal {
+    position: fixed; /* Fix the modal position */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for size */
+    background-color: #fff; /* Background color of modal */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding inside the modal */
+    width: 90%; /* Responsive width */
+    max-width: 500px; /* Maximum width for larger screens */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    animation: fadeIn 0.3s; /* Fade-in effect */
+    z-index: 1000;
+    
+  }
+  
+  /* Modal Header */
+  .modal-header {
+    display: flex;
+    justify-content: space-between; /* Space between title and close button */
+    align-items: center; /* Center align items */
+    border-bottom: 1px solid #ccc; /* Divider line */
+    padding-bottom: 10px; /* Padding below the header */
+  }
+  
+  /* Modal Title */
+  .modal-title {
+    font-size: 1.5em; /* Title size */
+    color: #333; /* Darker color for the title */
+  }
+  
+  /* Close Button */
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5em; /* Larger font size for visibility */
+    cursor: pointer; /* Pointer cursor */
+    color: #333; /* Color of the close button */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center content */
+    justify-content: center; /* Center content */
+    color: #333; /* Text color for content */
+    margin: 20px 0; /* Margin around content */
+  }
+  
+  /* Product Image */
+  .product-image {
+    width: 100%; /* Responsive image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Rounded corners for the image */
+    margin-bottom: 15px; /* Space below image */
+  }
+  
+  /* Product Description */
+  .product-description {
+    font-size: 1em; /* Size for description */
+    margin-bottom: 15px; /* Space below description */
+  }
+  
+  /* Product Price */
+  .product-price {
+    font-size: 1.2em; /* Slightly larger font size */
+    color: #007bff; /* Primary color for price */
+    margin-bottom: 20px; /* Space below price */
+  }
+  
+  /* Modal Footer */
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    margin-top: 20px; /* Margin above footer */
+  }
+  
+  /* Action Buttons */
+  .action-btn {
+    background-color: #007bff; /* Primary button color */
+    color: white; /* Text color */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Padding inside the button */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  .action-btn:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+  }
+  
+  /* Animation for Modal */
+  @keyframes fadeIn {
+    from {
+      opacity: 0; /* Start invisible */
+      transform: translate(-50%, -40%); /* Slightly above its position */
+    }
+    to {
+      opacity: 1; /* Fully visible */
+      transform: translate(-50%, -50%); /* Final position */
+    }
+  }
+  

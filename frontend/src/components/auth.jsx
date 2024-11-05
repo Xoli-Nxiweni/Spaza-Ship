@@ -1,12 +1,15 @@
 import './AuthModal.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleAuthModal, toggleAuthMode, closeAuthModal, registerUser, loginUser } from '../Redux/authSlice'; // Adjust the path accordingly
+import { toggleAuthModal, toggleAuthMode, closeAuthModal, registerUser, loginUser, toggleProfileModal } from '../Redux/authSlice'; // Import toggleProfileModal
 import { useRef, useEffect, useState } from 'react';
+import ProfileModal from './ProfileModal'; // Import the ProfileModal
 
 const AuthModal = () => {
   const dispatch = useDispatch();
   const { isAuthModalOpen, isSignUp, loading, error } = useSelector((state) => state.auth);
   const modalRef = useRef(null);
+  const isAuthenticated = useSelector((state) => state.auth.token);
+  const isProfileModalOpen = useSelector((state) => state.auth.isProfileModalOpen); // Track profile modal state
   
   // State to hold form data
   const [formData, setFormData] = useState({
@@ -18,15 +21,14 @@ const AuthModal = () => {
 
   const handleModalToggle = () => {
     dispatch(toggleAuthModal());
-    resetForm(); // Reset form data when closing the modal
+    resetForm();
   };
 
   const handleToggleAuthMode = () => {
     dispatch(toggleAuthMode());
-    resetForm(); // Reset form data when toggling auth mode
+    resetForm();
   };
 
-  // Reset form data
   const resetForm = () => {
     setFormData({
       name: '',
@@ -47,19 +49,21 @@ const AuthModal = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isSignUp) {
-      // Sign up logic
       dispatch(registerUser({
         name: formData.name,
         email: formData.email,
         password: formData.password,
       }));
     } else {
-      // Sign in logic
       dispatch(loginUser({
         email: formData.email,
         password: formData.password,
       }));
     }
+  };
+
+  const handleProfileToggle = () => {
+    dispatch(toggleProfileModal()); // Dispatch action to toggle profile modal
   };
 
   useEffect(() => {
@@ -80,11 +84,19 @@ const AuthModal = () => {
 
   return (
     <div>
-      <button onClick={handleModalToggle}>
-        {isAuthModalOpen ? 'Close' : 'Sign In'}
-      </button>
+      {isAuthenticated ? (
+        <button onClick={handleProfileToggle} className='authBtn'>
+          Profile
+        </button>
+      ) : (
+        <button onClick={handleModalToggle} className='authBtn'>
+          {isAuthModalOpen ? 'Close' : 'Sign In'}
+        </button>
+      )}
 
-      {isAuthModalOpen && (
+      {isProfileModalOpen && <ProfileModal />} {/* Conditionally render the ProfileModal */}
+
+      {isAuthModalOpen && !isAuthenticated && (
         <div className="authModal">
           <div className="authPopUp" ref={modalRef}>
             <h4>{isSignUp ? 'Sign-Up for SPAZAHUB' : 'Sign-In to SPAZAHUB'}</h4>
@@ -140,7 +152,7 @@ const AuthModal = () => {
               {isSignUp ? (
                 <>Already have an account? <span className="toggleLink" onClick={handleToggleAuthMode}>Sign In Here</span></>
               ) : (
-                <>Don't have an account? <span className="toggleLink" onClick={handleToggleAuthMode}>Sign Up Here</span></>
+                <>{"Don't have an account?"} <span className="toggleLink" onClick={handleToggleAuthMode}>Sign Up Here</span></>
               )}
             </p>
           </div>

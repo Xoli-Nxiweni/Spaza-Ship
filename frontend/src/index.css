@@ -13,12 +13,11 @@
 input{
     outline: none;
 }
-button {
+/* button {
     background: transparent;
     color: #fff;
     font-weight: bold;
     padding: 10px 15px;
-    /* border: 0; */
     border-radius: 15px;
     border: 2px solid #fff;
     cursor: pointer;
@@ -30,7 +29,6 @@ button:hover {
     font-weight: bold;
     padding: 10px 15px;
     border: 2px solid #ffdd57;
-    /* border: 0; */
     border-radius: 15px;
     cursor: pointer;
-  }
+  } */

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import AuthModal from './auth';
 import './Navbar.css';
-import { MdFavoriteBorder } from "react-icons/md";
+import { CiBookmark } from "react-icons/ci";
 import { BsCart4 } from "react-icons/bs";
 
 const Navbar = () => {
@@ -18,21 +18,15 @@ const Navbar = () => {
         <h1>SPAZA<span>SHIP</span></h1>
       </div>
 
-      {/* Search Bar */}
-      <div className="navbar-search">
-        <input type="text" placeholder="Search for products..." />
-        <button className="search-btn">Search</button>
-      </div>
-
       {/* Navigation Links */}
       <ul className={`navbar-links ${isMobileMenuOpen ? "mobile-menu" : ""}`}>
-        <li><a href="/home">PRODUCTS</a></li>
-        <li><a href="/categories">CONTACT</a></li>
+        {/* <li><a href="/home">PRODUCTS</a></li>
+        <li><a href="/categories">CONTACT</a></li> */}
       </ul>
 
       {/* User Actions */}
       <div className="navbar-user-actions">
-        <li><a href="/orders"><MdFavoriteBorder/></a></li>
+        <li><a href="/orders"><CiBookmark/></a></li>
         <li><a href="/cart"><BsCart4/></a></li>
         <AuthModal />
       </div>
