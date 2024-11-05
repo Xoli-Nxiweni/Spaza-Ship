@@ -14,7 +14,7 @@ const initialState = {
 // Async thunk for user registration
 export const registerUser = createAsyncThunk('auth/register', async (userData, { rejectWithValue }) => {
   try {
-    const response = await axios.post('http://localhost:6060/api/auth/register', userData);
+    const response = await axios.post('http://localhost:6060/api/user', userData);
     return response.data; // Assuming your API returns the user and token
   } catch (error) {
     return rejectWithValue(error.response.data.message || 'Failed to register');
@@ -24,7 +24,7 @@ export const registerUser = createAsyncThunk('auth/register', async (userData, {
 // Async thunk for user login
 export const loginUser = createAsyncThunk('auth/login', async (userData, { rejectWithValue }) => {
   try {
-    const response = await axios.post('http://localhost:6060/api/auth/login', userData);
+    const response = await axios.post('http://localhost:6060/api/user/login', userData);
     return response.data; // Assuming your API returns the user and token
   } catch (error) {
     return rejectWithValue(error.response.data.message || 'Failed to login');
