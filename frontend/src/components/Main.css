@@ -96,3 +96,34 @@
   .cardBtns button svg{
    font-size: 2em;
   }
+/* Floating Add Button Container */
+.floatingAddBtn {
+  position: fixed; /* Fixes the button in place */
+  right: 35px; /* Distance from the right */
+  bottom: 35px; /* Distance from the bottom */
+  z-index: 100; /* Ensure it's above other content */
+}
+
+/* Floating Add Button Style */
+.floatingAddBtn button {
+  padding: 15px; /* Padding inside the button */
+  border-radius: 14px; /* Make it circular */
+  border: 1px solid #ffdd57; /* Border color */
+  background-color: #ffdd57; /* Button background color */
+  color: #333; /* Text color */
+  font-size: 24px; /* Increase font size for visibility */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transition effects */
+}
+
+/* Hover Effect */
+.floatingAddBtn button:hover {
+  background-color: #ffd100; /* Slightly darker shade on hover */
+  transform: scale(1.05); /* Slightly enlarge button on hover */
+}
+
+/* Focus Effect */
+.floatingAddBtn button:focus {
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 5px rgba(255, 221, 87, 0.8); /* Add a glow effect */
+}

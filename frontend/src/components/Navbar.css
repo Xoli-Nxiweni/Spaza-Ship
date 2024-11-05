@@ -17,8 +17,11 @@
     font-weight: bold;
     color: #ffffff;
   }
+  .navbar-logo a {
+    text-decoration: none;
+  }
   .navbar-logo h1 span{
-    color: #ff0000;
+    color: #ffdd57;
   }
   
   /* Search bar */

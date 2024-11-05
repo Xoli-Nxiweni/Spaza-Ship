@@ -1,0 +1,84 @@
+/* AddProduct.css */
+.add-product-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 2em;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1001; /* Ensure it's above the overlay */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px; /* Spacing below the header */
+  }
+  
+  .modal-title {
+    font-size: 1.5em;
+    color: #333;
+  }
+  
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+  
+  /* Modal content styling */
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between inputs */
+  }
+  
+form input,
+form textarea {
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .action-btn {
+    background-color: #007bff; /* Primary button color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  .action-btn:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+  }
+  
+  /* Button margin for separation */
+  .add-product-modal button {
+    margin-top: 10px; /* Spacing above the buttons */
+  }
+  form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .formButtons{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  .formButtons button{
+    border: 0;
+    padding: 10px 15px;
+    cursor: pointer;
+    background: #ccc;
+  }

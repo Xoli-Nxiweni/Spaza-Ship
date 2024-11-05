@@ -6,6 +6,7 @@ import "./Main.css";
 import { useSelector } from 'react-redux';
 import { FaEye } from "react-icons/fa";
 import { TiShoppingCart } from "react-icons/ti";
+import AddProduct from './AddProduct';
 
 
 const Main = () => {
@@ -18,6 +19,7 @@ const Main = () => {
   const [total, setTotal] = useState(0); 
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isAddProductModalOpen, setAddProductModalOpen] = useState(false); // State for the modal
 
   const isAuthenticated = useSelector((state)=>state.auth.token)
 
@@ -51,6 +53,14 @@ const Main = () => {
 
   const handlePreviousPage = () => {
     if (page > 1) setPage((prevPage) => prevPage - 1);
+  };
+
+  const openAddProductModal = () => {
+    setAddProductModalOpen(true);
+  };
+
+  const closeAddProductModal = () => {
+    setAddProductModalOpen(false);
   };
 
   const handleViewDetails = (product) => {
@@ -102,7 +112,7 @@ const Main = () => {
             <div key={product.id} className="product-card">
               <h2>{product.name}</h2>
               <p>{product.description}</p>
-              <p>Price: ${product.price}</p>
+              <p>Price: R{product.price}</p>
               <div className="cardBtns">
                 <button onClick={() => handleViewDetails(product)}><FaEye/></button>
                 {isAuthenticated && (
@@ -131,6 +141,22 @@ const Main = () => {
       </div>
 
       {selectedProduct && <ProductModal product={selectedProduct} onClose={closeModal} />}
+
+      {/* {isAuthenticated && (
+  <div className="floatingAddBtn">
+    <button aria-label="Add to cart">+</button>
+  </div>
+)} */}
+ {/* Other components and code */}
+
+ {isAuthenticated && (
+        <div className="floatingAddBtn">
+          <button onClick={openAddProductModal}>+</button>
+        </div>
+      )}
+
+      {isAddProductModalOpen && <AddProduct onClose={closeAddProductModal} />} {/* Render the AddProduct modal */}
+
     </div>
   );
 };

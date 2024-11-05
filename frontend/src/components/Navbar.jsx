@@ -15,7 +15,7 @@ const Navbar = () => {
     <nav className="navbar">
       {/* Logo */}
       <div className="navbar-logo">
-        <h1>SPAZA<span>SHIP</span></h1>
+        <a href="#"><h1>SPAZA<span>SHIP</span></h1></a>
       </div>
 
       {/* Navigation Links */}
