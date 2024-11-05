@@ -1,38 +1,98 @@
-.wrapper{
+/* Add wrapper styles */
+.wrapper {
     display: grid;
     grid-template-areas: 
-    'nav nav nav'
-    'aside1 main aside2'
-    'aside1 main aside2'
-    /* 'section section section' */
-    'footer footer footer'
-    ;
-    /* height: 100vh; */
-    grid-template-rows: 1fr 2fr 3fr;
-    
+        'nav nav nav'
+        'aside1 main aside2'
+        'aside1 main aside2'
+        'footer footer footer';
+    grid-template-columns: auto 1fr auto;
+    height: 100vh;
+    gap: 0.5em;
 }
 
-nav{
-    grid-area: nav ;
-    background: blue;
+/* Navbar styling */
+nav {
+    grid-area: nav;
+    /* background: blue; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    color: white;
 }
-.aside1{
+
+/* Sidebar styles */
+.aside1, .aside2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    transition: width 0.3s ease-in-out;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* Left sidebar */
+.aside1 {
     grid-area: aside1;
-    background: orange;
+    /* background: orange; */
+    width: 0em;
 }
-main{
+
+/* Right sidebar */
+.aside2 {
+    grid-area: aside2;
+    /* background: red; */
+    width: 0;
+}
+
+/* Expanded sidebar */
+.aside1.open, .aside2.open {
+    width: 15em; /* Adjust width as needed */
+}
+
+/* Main content area */
+main {
     grid-area: main;
     background: gold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
 }
-.aside2{
-    grid-area: aside2;
-    background: red;
-}
-section{
-    grid-area: section;
-    background: yellow;
-}
-footer{
+
+/* Footer styling */
+footer {
     grid-area: footer;
     background: rgb(46, 46, 2);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+}
+
+/* Button styles */
+.toggleButton {
+    position: absolute;
+    top: 5em; /* Align with nav */
+    background: lightgray;
+    border: none;
+    padding: 0.5em;
+    cursor: pointer;
+    z-index: 1;
+}
+
+/* Left button positioning */
+.leftButton .toggleButton {
+    left: 0em;
+    top: 50%;
+}
+
+/* Right button positioning */
+.rightButton .toggleButton {
+    right: 0em;
+    top: 50%;
 }

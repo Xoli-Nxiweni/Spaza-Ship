@@ -34,6 +34,32 @@ const registerUser = async (req, res) => {
     }
 };
 
+// const loginUser = async (req, res) => {
+//     try {
+//         const { email, password } = req.body;
+//         const user = await User.findOne({ email });
+
+//         // Check if the user exists and if the password matches
+//         if (!user || !(await bcrypt.compare(password, user.password))) {
+//             return res.status(401).json({
+//                 error: "Invalid Login Credentials"
+//             });
+//         }
+
+//         // Generate a token for the user
+//         const token = await generateToken(user._id);
+//         res.status(200).json({
+//             _id: user._id,
+//             email: user.email,
+//             name: user.name,
+//             token,
+//         });
+//     } catch (error) {
+//         console.error("Login error:", error); // Log for debugging
+//         res.status(500).json({ error: error.message });
+//     }
+// };
+
 const loginUser = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -48,6 +74,9 @@ const loginUser = async (req, res) => {
 
         // Generate a token for the user
         const token = await generateToken(user._id);
+        user.tokens = user.tokens.concat({ token });
+        await user.save();
+
         res.status(200).json({
             _id: user._id,
             email: user.email,
@@ -60,7 +89,20 @@ const loginUser = async (req, res) => {
     }
 };
 
+
+export const logout = async (req, res) => {
+    try {
+        req.user.tokens = req.user.tokens.filter((tokenDoc) => tokenDoc.token !== req.token);
+        await req.user.save();
+        res.send({ message: "Logged out successfully" });
+    } catch (error) {
+        res.status(500).send({ error: "Error logging out" });
+    }
+};
+
+
 export default {
     registerUser,
     loginUser,
+    logout
 };

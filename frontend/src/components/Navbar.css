@@ -8,6 +8,9 @@
     color: #000;
     position: relative;
     gap: 20px;
+    /* border-radius: 25px; */
+    width: 100%;
+    height: auto;
   }
   
   .navbar-logo h1 {
@@ -29,7 +32,6 @@
   }
   .navbar-search input {
     padding: 0.5rem;
-    width: 100%;
     border: none;
     border-radius: 5px 0 0 5px;
     outline: none;
@@ -41,6 +43,16 @@
     border-radius: 0 5px 5px 0;
     cursor: pointer;
     font-weight: bold;
+    color: #333;
+  }
+  .search-btn:hover {
+    padding: 0.5rem 1rem;
+    background-color: #ffdd57;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
   }
   
   /* Navbar links */
@@ -61,13 +73,25 @@
   }
   .navbar-links a:hover {
     /* background-color: #ffdd57; */
-    color: red;
+    color: #ffdd57;
   }
   
   /* User action buttons */
   .navbar-user-actions {
     display: flex;
-    gap: 0.5rem;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+  }
+  .navbar-user-actions svg {
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    font-size: 2em;
+    color: #fff;
+  }
+  .navbar-user-actions svg:hover {
+    color: #ffdd57;
   }
   .btn {
     padding: 0.5rem 1rem;

@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import AuthModal from './auth';
 import './Navbar.css';
+import { MdFavoriteBorder } from "react-icons/md";
+import { BsCart4 } from "react-icons/bs";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -12,7 +15,7 @@ const Navbar = () => {
     <nav className="navbar">
       {/* Logo */}
       <div className="navbar-logo">
-        <h1>SPAZA<span>HUB</span></h1>
+        <h1>SPAZA<span>SHIP</span></h1>
       </div>
 
       {/* Search Bar */}
@@ -23,15 +26,15 @@ const Navbar = () => {
 
       {/* Navigation Links */}
       <ul className={`navbar-links ${isMobileMenuOpen ? "mobile-menu" : ""}`}>
-        <li><a href="/home">Home</a></li>
-        <li><a href="/categories">Categories</a></li>
-        <li><a href="/orders">Orders</a></li>
-        <li><a href="/cart">Cart</a></li>
+        <li><a href="/home">PRODUCTS</a></li>
+        <li><a href="/categories">CONTACT</a></li>
       </ul>
 
       {/* User Actions */}
       <div className="navbar-user-actions">
-        <button className="btn btn-primary">Sign In</button>
+        <li><a href="/orders"><MdFavoriteBorder/></a></li>
+        <li><a href="/cart"><BsCart4/></a></li>
+        <AuthModal />
       </div>
 
       {/* Mobile Menu Toggle */}

@@ -1,0 +1,42 @@
+/* Footer.css */
+
+.footer {
+  background-color: #282c34; /* Dark background for modern look */
+  color: white; /* White text color */
+  padding: 40px 20px; /* Padding for top/bottom and left/right */
+  text-align: center; /* Center the text */
+}
+
+.footer-title {
+  font-size: 2em; /* Large font size for title */
+  margin-bottom: 10px; /* Space below the title */
+}
+
+.footer-description {
+  font-size: 1.2em; /* Medium font size for description */
+  margin-bottom: 20px; /* Space below the description */
+}
+
+.social-links {
+  display: flex; /* Flex layout for social links */
+  justify-content: center; /* Center the links */
+  gap: 15px; /* Space between the links */
+  margin-bottom: 20px; /* Space below social links */
+}
+
+.social-link {
+  color: #61dafb; /* Light blue color for links */
+  text-decoration: none; /* Remove underline */
+  transition: color 0.3s; /* Smooth color transition on hover */
+}
+
+.social-link:hover {
+  color: #21a1f1; /* Darker blue on hover */
+}
+
+.footer-bottom {
+  font-size: 0.9em; /* Smaller font size for copyright */
+  border-top: 1px solid rgba(255, 255, 255, 0.2); /* Top border for separation */
+  padding-top: 10px; /* Padding for top space */
+  margin-top: 20px; /* Margin for separation from the content above */
+}
